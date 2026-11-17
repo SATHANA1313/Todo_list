@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Todo Application</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div>
+            <h1>My Todo List</h1>
+            <p>Organize your day, one task at a time.</p>
+        </div>
+        <button id="themeBtn" onclick="toggleTheme()">🌙</button>
+    </header>
+
+    <section class="stats">
+        <div class="stat-card">
+            <h2 id="total">0</h2>
+            <p>Total Tasks</p>
+        </div>
+        <div class="stat-card">
+            <h2 id="completed">0</h2>
+            <p>Completed</p>
+        </div>
+        <div class="stat-card">
+            <h2 id="pending">0</h2>
+            <p>Pending</p>
+        </div>
+    </section>
+
+    <div class="progress-section">
+        <p>Overall Progress</p>
+        <div class="progress-bar">
+            <div id="progress"></div>
+        </div>
+        <small id="progressText">0% completed</small>
+    </div>
+
+    <section class="task-form">
+        <h2>Add New Task</h2>
+
+        <input type="text" id="taskInput"
+            placeholder="Enter your task...">
+
+        <div class="form-row">
+            <select id="category">
+                <option value="Personal">Personal</option>
+                <option value="Study">Study</option>
+                <option value="Work">Work</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <select id="priority">
+                <option value="Low">Low Priority</option>
+                <option value="Medium">Medium Priority</option>
+                <option value="High">High Priority</option>
+            </select>
+
+            <input type="date" id="dueDate">
+        </div>
+
+        <button onclick="addTask()" id="addBtn">+ Add Task</button>
+    </section>
+
+    <section class="task-section">
+        <h2>My Tasks</h2>
+
+        <input type="text" id="searchInput"
+            placeholder="🔍 Search tasks..."
+            oninput="renderTasks()">
+
+        <div class="filters">
+            <button onclick="setFilter('all')">All</button>
+            <button onclick="setFilter('pending')">Pending</button>
+            <button onclick="setFilter('completed')">Completed</button>
+        </div>
+
+        <div class="filters">
+            <select id="categoryFilter" onchange="renderTasks()">
+                <option value="all">All Categories</option>
+                <option value="Personal">Personal</option>
+                <option value="Study">Study</option>
+                <option value="Work">Work</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <select id="sortFilter" onchange="renderTasks()">
+                <option value="newest">Newest First</option>
+                <option value="oldest">Oldest First</option>
+                <option value="priority">Priority</option>
+                <option value="date">Due Date</option>
+            </select>
+        </div>
+
+        <div id="taskList"></div>
+
+        <button class="clear-btn" onclick="clearCompleted()">
+            Clear Completed Tasks
+        </button>
+    </section>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
